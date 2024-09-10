@@ -1,29 +1,51 @@
-class Animal {
-  public void animalSound() {
-    System.out.println("The animal makes a sound");
-  }
+// Class
+class Mobil {
+    private int kecepatan; // Encapsulation
+
+    public Mobil() {
+        kecepatan = 0;
+    }
+
+    // Polymorphism melalui method overriding
+    public void start() {
+        System.out.println("Mobil mulai berjalan.");
+    }
+
+    // Overloading method untuk setKecepatan
+    public void setKecepatan(int kecepatan) {
+        this.kecepatan = kecepatan;
+    }
+
+    // Nama method sama tetapi tipe data berbeda
+    public void setKecepatan(float kecepatan) {
+        this.kecepatan = (int) kecepatan;
+    }
+
+    public int getKecepatan() {
+        return kecepatan;
+    }
 }
 
-class Pig extends Animal {
-  public void animalSound() {
-    System.out.println("The pig says: wee wee");
-  }
+// Abstraction dan Inheritance
+class MobilSport extends Mobil {
+    @Override
+  // Polymorphism
+    public void start() {
+        System.out.println("Mobil sport mulai berjalan dengan cepat.");
+    }
 }
 
-class Dog extends Animal {
-  public void animalSound() {
-    System.out.println("The dog says: bow wow");
-  }
-}
+public class Main {
+    public static void main(String[] args) {
+        // Object
+        Mobil mobil1 = new Mobil();
+        mobil1.start();
+        mobil1.setKecepatan(60);
 
-class Main {
-  public static void main(String[] args) {
-    Animal myAnimal = new Animal();
-    Animal myPig = new Pig();
-    Animal myDog = new Dog();
-        
-    myAnimal.animalSound();
-    myPig.animalSound();
-    myDog.animalSound();
-  }
+        MobilSport mobilSport = new MobilSport();
+        mobilSport.start();
+        mobilSport.setKecepatan(120);
+
+        System.out.println("Kecepatan mobil sport: " + mobilSport.getKecepatan() + " km/jam");
+    }
 }
